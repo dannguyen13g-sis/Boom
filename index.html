@@ -510,7 +510,7 @@ $('onlineBtn').addEventListener('click', ()=>{
   if (!roomApi){ setStatus('Online play isn’t available in this view. Open the page on claude.ai while signed in — or practice vs the bot.'); return; }
   joinOnline(c);
 });
-$('dlBtn').addEventListener('click', async ()=>{
+if ($('dlBtn')) $('dlBtn').addEventListener('click', async ()=>{
   let dl = null; try { dl = window.claude && typeof window.claude.use==='function' ? await window.claude.use('downloads') : null; } catch(_){ dl = null; }
   if (dl){
     try { await dl.save({filename:'duel-arena.html', data:PAGE_SOURCE}); setStatus('Saved duel-arena.html — open it in any browser to play vs the bot.'); }
